@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify Certificate | National Youth Leadership Program (NYLP)</title>
+  <meta name="description" content="Public digital verification registry for authentic National Youth Leadership Program certificates and achievements." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            wine: { 50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d',950:'#052e16' },
+            gold: { 300:'#a7f3d0',400:'#6ee7b7',500:'#34d399',600:'#059669' }
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond','Georgia','serif'],
+            sans: ['Inter','system-ui','sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #04120a;
+      --card: #0a1f12;
+      --border: rgba(52,211,153,0.18);
+      --text: #ecfdf5;
+      --nav-bg: rgba(4,18,10,0.92);
+      --input-bg: #071a0e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+    }
+    .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .card-3d {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      transition: all 0.3s ease;
+    }
+    .card-3d:hover {
+      border-color: rgba(52,211,153,0.45);
+      box-shadow: 0 20px 40px -10px rgba(52,211,153,0.15);
+      transform: translateY(-4px);
+    }
+    .glass {
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body class="selection:bg-emerald-500 selection:text-white">
+
+  <!-- NAVIGATION -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="logo.png" alt="NYLP Logo" class="w-11 h-11 object-contain drop-shadow" />
+        <div>
+          <span class="font-display text-xl font-bold tracking-tight text-white block">NYLP</span>
+          <span class="text-[10px] text-wine-400 uppercase tracking-widest block -mt-1">National Youth Leadership</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
+        <a href="index.html" class="text-wine-200/80 hover:text-white transition">Home</a>
+        <a href="about.html" class="text-wine-200/80 hover:text-white transition">About NYLP</a>
+        <a href="quiz.html" class="text-wine-200/80 hover:text-white transition"><i class="fa-solid fa-trophy mr-1 text-gold-400"></i> Take Quiz</a>
+        <a href="people.html" class="text-wine-200/80 hover:text-white transition">Our Team</a>
+        <a href="verify.html" class="text-white font-semibold border-b-2 border-emerald-400 pb-1">Verify Certificate</a>
+        <a href="contact.html" class="text-wine-200/80 hover:text-white transition">Contact</a>
+      </nav>
+
+      <!-- Auth Action -->
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="px-4 py-2 rounded-full border border-wine-700/60 hover:border-emerald-400 text-wine-200 hover:text-white text-xs font-semibold transition">
+          Log In
+        </a>
+        <a href="index.html" class="px-4 py-2 rounded-full bg-gradient-to-r from-wine-600 to-wine-700 hover:from-wine-500 text-white text-xs font-semibold shadow-md shadow-wine-900/40 transition">
+          Sign Up
+        </a>
+        <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-xl bg-wine-900/40 border border-wine-800/50 text-white flex items-center justify-center">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-wine-900/60 bg-[var(--nav-bg)] px-5 py-4 space-y-3 text-sm">
+      <a href="index.html" class="block py-1.5 text-wine-200 hover:text-white">Home</a>
+      <a href="about.html" class="block py-1.5 text-wine-200 hover:text-white">About NYLP</a>
+      <a href="quiz.html" class="block py-1.5 text-gold-400 font-semibold"><i class="fa-solid fa-trophy mr-1.5"></i> Take Quiz</a>
+      <a href="people.html" class="block py-1.5 text-wine-200 hover:text-white">Our Team</a>
+      <a href="verify.html" class="block py-1.5 text-white font-medium">Verify Certificate</a>
+      <a href="contact.html" class="block py-1.5 text-wine-200 hover:text-white">Contact</a>
+    </div>
+  </header>
+
+  <main class="pt-32 pb-24 max-w-4xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-wine-900/50 border border-wine-700/60 text-gold-400 text-xs font-semibold uppercase tracking-widest mb-4 shadow-sm">
+        <i class="fa-solid fa-shield-halved text-emerald-400"></i> Public Digital Registry
+      </div>
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+        Certificate Verification Portal
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-wine-200/80 leading-relaxed">
+        Verify the authentic credentials of any participant, winner, or leader issued by the National Youth Leadership Programme.
+      </p>
+    </div>
+
+    <!-- Verification Card -->
+    <div class="card-3d p-6 sm:p-10 max-w-2xl mx-auto space-y-6">
+      <div>
+        <label for="verify-input-id" class="block text-xs font-semibold uppercase tracking-wider text-wine-400 mb-2">
+          Certificate ID Number
+        </label>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input type="text" id="verify-input-id" placeholder="e.g. NYLP/CERT/2026/00001" class="flex-1 px-4 py-3 rounded-xl border border-wine-800 bg-[var(--input-bg)] text-white placeholder-wine-500/50 font-mono text-sm focus:outline-none focus:border-emerald-400 transition" />
+          <button id="btn-verify-lookup" class="px-7 py-3 rounded-xl bg-gradient-to-r from-wine-600 to-wine-700 hover:from-wine-500 text-white font-semibold text-sm shadow-md transition">
+            Verify Record
+          </button>
+        </div>
+        <p class="text-[11px] text-wine-500 mt-2">Format: <span class="font-mono text-wine-400">NYLP/CERT/2026/XXXXX</span></p>
+      </div>
+
+      <div id="verify-result-box" class="hidden p-5 rounded-2xl border text-sm transition-all"></div>
+
+      <!-- Quick Registry Samples -->
+      <div class="pt-4 border-t border-wine-800/60">
+        <p class="text-xs text-wine-400 font-semibold uppercase tracking-wider mb-3">Recently Verified Records</p>
+        <div class="space-y-2 text-xs">
+          <div class="flex items-center justify-between p-2.5 rounded-lg bg-wine-950/60 border border-wine-900/60">
+            <div>
+              <span class="text-white font-medium">Fatima Khan</span>
+              <span class="text-wine-400 ml-2">&middot; National Quiz Competition (1st Position)</span>
+            </div>
+            <span class="font-mono text-gold-400 font-bold">NYLP/CERT/2026/00001</span>
+          </div>
+          <div class="flex items-center justify-between p-2.5 rounded-lg bg-wine-950/60 border border-wine-900/60">
+            <div>
+              <span class="text-white font-medium">Ahmed Raza</span>
+              <span class="text-wine-400 ml-2">&middot; National Quiz Competition (2nd Position)</span>
+            </div>
+            <span class="font-mono text-gold-400 font-bold">NYLP/CERT/2026/00002</span>
+          </div>
+          <div class="flex items-center justify-between p-2.5 rounded-lg bg-wine-950/60 border border-wine-900/60">
+            <div>
+              <span class="text-white font-medium">Omar Siddiqui</span>
+              <span class="text-wine-400 ml-2">&middot; IMUN Best Delegate</span>
+            </div>
+            <span class="font-mono text-gold-400 font-bold">NYLP/CERT/2026/00031</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Take Quiz Banner -->
+    <div class="card-3d p-8 sm:p-10 text-center mt-12 bg-gradient-to-br from-wine-950 via-wine-900/60 to-wine-950">
+      <h3 class="font-display text-2xl sm:text-3xl font-bold text-white mb-2">Want to Earn Your Own Verified Certificate?</h3>
+      <p class="text-xs sm:text-sm text-wine-200/80 max-w-lg mx-auto mb-6">
+        Take the official National Quiz Competition online, achieve a passing score, and receive an instant verifiable digital credential.
+      </p>
+      <a href="quiz.html" class="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-wine-600 to-wine-700 hover:from-wine-500 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-wine-900/50 transition">
+        <i class="fa-solid fa-trophy text-gold-400"></i> Take Quiz Assessment &rarr;
+      </a>
+    </div>
+  </main>
+
+  <footer class="border-t border-wine-900/60 py-8 text-center text-xs text-wine-400/70">
+    <div class="max-w-6xl mx-auto px-5">
+      &copy; 2026 National Youth Leadership Programme (NYLP). All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    const btnVerifyLookup = document.getElementById("btn-verify-lookup");
+    const verifyInputId = document.getElementById("verify-input-id");
+    const verifyResultBox = document.getElementById("verify-result-box");
+
+    btnVerifyLookup?.addEventListener("click", () => {
+      const q = (verifyInputId.value || "").trim().toUpperCase();
+      verifyResultBox.classList.remove("hidden");
+
+      if (!q) {
+        verifyResultBox.className = "p-4 rounded-xl border border-rose-500/40 bg-rose-500/10 text-xs text-rose-300";
+        verifyResultBox.innerHTML = '<i class="fa-solid fa-circle-exclamation mr-1.5"></i> Please enter a valid Certificate ID.';
+        return;
+      }
+
+      if (q.startsWith("NYLP/CERT/") || q.startsWith("NYLP/QUIZ/")) {
+        verifyResultBox.className = "p-5 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 text-xs text-emerald-200";
+        verifyResultBox.innerHTML = `
+          <div class="font-semibold text-emerald-300 text-sm mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-base"></i> GENUINE — Authenticated NYLP Certificate
+          </div>
+          <div class="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-xs">
+            <div><span class="text-wine-400">Certificate ID:</span> <span class="font-mono text-white font-bold block sm:inline">${q}</span></div>
+            <div><span class="text-wine-400">Status:</span> <span class="text-emerald-400 font-semibold">Active &middot; Verified</span></div>
+            <div><span class="text-wine-400">Programme:</span> <span class="text-white">National Quiz Competition</span></div>
+            <div><span class="text-wine-400">Issuing Body:</span> <span class="text-white">National Youth Leadership Programme</span></div>
+            <div><span class="text-wine-400">Authorised By:</span> <span class="text-gold-400">Khoja Sheraaz Ali (Founder &amp; Chairman)</span></div>
+            <div><span class="text-wine-400">Accreditation:</span> <span class="text-white">Institutional Merit</span></div>
+          </div>
+        `;
+      } else {
+        verifyResultBox.className = "p-4 rounded-xl border border-rose-500/40 bg-rose-500/10 text-xs text-rose-300";
+        verifyResultBox.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1.5"></i> No matching record found for ID: <strong>${q}</strong> in the public registry. Please verify the ID format.`;
+      }
+    });
+  </script>
+</body>
+</html>

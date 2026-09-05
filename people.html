@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our People &amp; Leadership | National Youth Leadership Program (NYLP)</title>
+  <meta name="description" content="Meet the leaders, directors, coordinators, ambassadors, and interns driving Pakistan's largest youth leadership movement." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            wine: { 50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d',950:'#052e16' },
+            gold: { 300:'#a7f3d0',400:'#6ee7b7',500:'#34d399',600:'#059669' }
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond','Georgia','serif'],
+            sans: ['Inter','system-ui','sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #04120a;
+      --card: #0a1f12;
+      --border: rgba(52,211,153,0.18);
+      --text: #ecfdf5;
+      --nav-bg: rgba(4,18,10,0.92);
+      --input-bg: #071a0e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+    }
+    .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .card-3d {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      transition: all 0.3s ease;
+    }
+    .card-3d:hover {
+      border-color: rgba(52,211,153,0.45);
+      box-shadow: 0 20px 40px -10px rgba(52,211,153,0.15);
+      transform: translateY(-4px);
+    }
+    .glass {
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body class="selection:bg-emerald-500 selection:text-white">
+
+  <!-- NAVIGATION -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="logo.png" alt="NYLP Logo" class="w-11 h-11 object-contain drop-shadow" />
+        <div>
+          <span class="font-display text-xl font-bold tracking-tight text-white block">NYLP</span>
+          <span class="text-[10px] text-wine-400 uppercase tracking-widest block -mt-1">National Youth Leadership</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
+        <a href="index.html" class="text-wine-200/80 hover:text-white transition">Home</a>
+        <a href="about.html" class="text-wine-200/80 hover:text-white transition">About NYLP</a>
+        <a href="quiz.html" class="text-wine-200/80 hover:text-white transition"><i class="fa-solid fa-trophy mr-1 text-gold-400"></i> Take Quiz</a>
+        <a href="people.html" class="text-white font-semibold border-b-2 border-emerald-400 pb-1">Our Team</a>
+        <a href="verify.html" class="text-wine-200/80 hover:text-white transition">Verify Certificate</a>
+        <a href="contact.html" class="text-wine-200/80 hover:text-white transition">Contact</a>
+      </nav>
+
+      <!-- Auth Action -->
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="px-4 py-2 rounded-full border border-wine-700/60 hover:border-emerald-400 text-wine-200 hover:text-white text-xs font-semibold transition">
+          Log In
+        </a>
+        <a href="index.html" class="px-4 py-2 rounded-full bg-gradient-to-r from-wine-600 to-wine-700 hover:from-wine-500 text-white text-xs font-semibold shadow-md shadow-wine-900/40 transition">
+          Sign Up
+        </a>
+        <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-xl bg-wine-900/40 border border-wine-800/50 text-white flex items-center justify-center">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-wine-900/60 bg-[var(--nav-bg)] px-5 py-4 space-y-3 text-sm">
+      <a href="index.html" class="block py-1.5 text-wine-200 hover:text-white">Home</a>
+      <a href="about.html" class="block py-1.5 text-wine-200 hover:text-white">About NYLP</a>
+      <a href="quiz.html" class="block py-1.5 text-gold-400 font-semibold"><i class="fa-solid fa-trophy mr-1.5"></i> Take Quiz</a>
+      <a href="people.html" class="block py-1.5 text-white font-medium">Our Team</a>
+      <a href="verify.html" class="block py-1.5 text-wine-200 hover:text-white">Verify Certificate</a>
+      <a href="contact.html" class="block py-1.5 text-wine-200 hover:text-white">Contact</a>
+    </div>
+  </header>
+
+  <main class="pt-32 pb-24 max-w-6xl mx-auto px-5 sm:px-8">
+    
+    <!-- Hero Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-wine-900/50 border border-wine-700/60 text-gold-400 text-xs font-semibold uppercase tracking-widest mb-4 shadow-sm">
+        <i class="fa-solid fa-users text-emerald-400"></i> Institutional Hierarchy &amp; Directory
+      </div>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
+        The People Behind NYLP
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-wine-200/80 leading-relaxed">
+        From visionary founders and directors to regional chapter leads, campus ambassadors, and dedicated interns — meet the team driving leadership development across Pakistan.
+      </p>
+    </div>
+
+    <!-- 1. EXECUTIVE LEADERSHIP & FOUNDER -->
+    <div class="mb-16">
+      <div class="border-b border-wine-800/60 pb-3 mb-8 flex items-center justify-between">
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">Executive Leadership</h2>
+          <p class="text-xs text-wine-400">Strategic Authority &middot; Institutional Vision</p>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-medium">Tier 1</span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Founder Card -->
+        <div class="card-3d p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 bg-gradient-to-br from-wine-950 via-wine-900/50 to-wine-950">
+          <div class="relative shrink-0">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80" alt="Khoja Sheraaz Ali" class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl object-cover border-2 border-emerald-400/50 shadow-lg shadow-emerald-950/50" />
+            <span class="absolute -bottom-2 -right-2 px-2.5 py-0.5 rounded-full bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-wider">Founder</span>
+          </div>
+          <div class="text-center sm:text-left space-y-2">
+            <h3 class="font-display text-2xl font-bold text-white">Khoja Sheraaz Ali</h3>
+            <p class="text-xs font-semibold uppercase tracking-wider text-gold-400">Founder &amp; Chairman</p>
+            <p class="text-xs text-wine-200/80 leading-relaxed pt-1">
+              Pioneered the National Youth Leadership Programme in 2025. Directs strategic institutional MOUs with Harvard alumni, Aspire Institute, and 60+ partner universities.
+            </p>
+            <div class="flex items-center justify-center sm:justify-start gap-3 pt-2 text-wine-400 text-sm">
+              <a href="#" class="hover:text-emerald-400 transition"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="mailto:official.nylp.pk@gmail.com" class="hover:text-emerald-400 transition"><i class="fa-solid fa-envelope"></i></a>
+              <span class="text-[11px] text-wine-500 font-mono">Islamabad, PK</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Director Card -->
+        <div class="card-3d p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 bg-gradient-to-br from-wine-950 via-wine-900/50 to-wine-950">
+          <div class="relative shrink-0">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Dr. Tariq Mansoor" class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl object-cover border-2 border-emerald-400/50 shadow-lg shadow-emerald-950/50" />
+            <span class="absolute -bottom-2 -right-2 px-2.5 py-0.5 rounded-full bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-wider">Board</span>
+          </div>
+          <div class="text-center sm:text-left space-y-2">
+            <h3 class="font-display text-2xl font-bold text-white">Dr. Tariq Mansoor</h3>
+            <p class="text-xs font-semibold uppercase tracking-wider text-gold-400">Executive Director &amp; Board Member</p>
+            <p class="text-xs text-wine-200/80 leading-relaxed pt-1">
+              Oversees institutional governance, nationwide policy formulation, accreditation compliance, and academic review boards for the annual cohorts.
+            </p>
+            <div class="flex items-center justify-center sm:justify-start gap-3 pt-2 text-wine-400 text-sm">
+              <a href="#" class="hover:text-emerald-400 transition"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="mailto:official.nylp.pk@gmail.com" class="hover:text-emerald-400 transition"><i class="fa-solid fa-envelope"></i></a>
+              <span class="text-[11px] text-wine-500 font-mono">Islamabad, PK</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. DIRECTORATE & PROGRAM LEADS -->
+    <div class="mb-16">
+      <div class="border-b border-wine-800/60 pb-3 mb-8 flex items-center justify-between">
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">Directorate &amp; Program Leads</h2>
+          <p class="text-xs text-wine-400">Operational Excellence &middot; Cohort Execution</p>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-medium">Tier 2</span>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Program Lead 1 -->
+        <div class="card-3d p-6 text-center space-y-3">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80" alt="Ayesha Qaisar" class="w-24 h-24 rounded-full mx-auto object-cover border-2 border-emerald-400/40 shadow" />
+          <div>
+            <h3 class="font-display text-xl font-bold text-white">Engr. Ayesha Qaisar</h3>
+            <p class="text-xs font-semibold text-gold-400 uppercase">AI Systems &amp; Technical Lead</p>
+            <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-wine-900 text-[10px] text-wine-300">Technical Directorate</span>
+          </div>
+          <p class="text-xs text-wine-200/75 leading-relaxed">
+            Architect of NYLP digital portals, automated certificate verification systems, and AI in governance training tracks.
+          </p>
+        </div>
+
+        <!-- Program Lead 2 -->
+        <div class="card-3d p-6 text-center space-y-3">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80" alt="Bilal Hussain" class="w-24 h-24 rounded-full mx-auto object-cover border-2 border-emerald-400/40 shadow" />
+          <div>
+            <h3 class="font-display text-xl font-bold text-white">Bilal Hussain</h3>
+            <p class="text-xs font-semibold text-gold-400 uppercase">Director, IMUN &amp; Diplomacy</p>
+            <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-wine-900 text-[10px] text-wine-300">Diplomacy Track</span>
+          </div>
+          <p class="text-xs text-wine-200/75 leading-relaxed">
+            Directs International Model United Nations (IMUN) simulations, Parliamentary debates, and bilateral diplomatic masterclasses.
+          </p>
+        </div>
+
+        <!-- Program Lead 3 -->
+        <div class="card-3d p-6 text-center space-y-3">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop&q=80" alt="Maryam Siddiqui" class="w-24 h-24 rounded-full mx-auto object-cover border-2 border-emerald-400/40 shadow" />
+          <div>
+            <h3 class="font-display text-xl font-bold text-white">Maryam Siddiqui</h3>
+            <p class="text-xs font-semibold text-gold-400 uppercase">Director, Youth Capacity Building</p>
+            <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-wine-900 text-[10px] text-wine-300">Fellowship Operations</span>
+          </div>
+          <p class="text-xs text-wine-200/75 leading-relaxed">
+            Head of Quaid-e-Azam Fellowship Curriculum, leadership soft-skills modules, and nationwide webinar cohorts.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. REGIONAL & PROVINCIAL CHAPTER HEADS -->
+    <div class="mb-16">
+      <div class="border-b border-wine-800/60 pb-3 mb-8 flex items-center justify-between">
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">Regional Chapter Heads</h2>
+          <p class="text-xs text-wine-400">Provincial Outreach &middot; Grassroots Mobilization</p>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-medium">Tier 3</span>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Region 1 -->
+        <div class="card-3d p-5 text-center space-y-2.5">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&auto=format&fit=crop&q=80" alt="Hamza Sheikh" class="w-20 h-20 rounded-full mx-auto object-cover border border-emerald-400/30" />
+          <h3 class="font-display text-lg font-bold text-white">Hamza Sheikh</h3>
+          <p class="text-xs text-gold-400 font-semibold uppercase">Islamabad &amp; Rawalpindi</p>
+          <p class="text-[11px] text-wine-300/80">Regional Chapter Lead &middot; Federal Outreach</p>
+        </div>
+
+        <!-- Region 2 -->
+        <div class="card-3d p-5 text-center space-y-2.5">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="Dua Fatima" class="w-20 h-20 rounded-full mx-auto object-cover border border-emerald-400/30" />
+          <h3 class="font-display text-lg font-bold text-white">Dua Fatima</h3>
+          <p class="text-xs text-gold-400 font-semibold uppercase">Punjab Chapter</p>
+          <p class="text-[11px] text-wine-300/80">Lahore &amp; Central Punjab Coordination</p>
+        </div>
+
+        <!-- Region 3 -->
+        <div class="card-3d p-5 text-center space-y-2.5">
+          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=300&auto=format&fit=crop&q=80" alt="Zeeshan Ahmed" class="w-20 h-20 rounded-full mx-auto object-cover border border-emerald-400/30" />
+          <h3 class="font-display text-lg font-bold text-white">Zeeshan Ahmed</h3>
+          <p class="text-xs text-gold-400 font-semibold uppercase">Sindh Chapter</p>
+          <p class="text-[11px] text-wine-300/80">Karachi &amp; Hyderabad Youth Networks</p>
+        </div>
+
+        <!-- Region 4 -->
+        <div class="card-3d p-5 text-center space-y-2.5">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&auto=format&fit=crop&q=80" alt="Saifullah Khan" class="w-20 h-20 rounded-full mx-auto object-cover border border-emerald-400/30" />
+          <h3 class="font-display text-lg font-bold text-white">Saifullah Khan</h3>
+          <p class="text-xs text-gold-400 font-semibold uppercase">KPK &amp; Balochistan</p>
+          <p class="text-[11px] text-wine-300/80">Peshawar &amp; Quetta Regional Lead</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. CAMPUS AMBASSADORS & EVENT LEADS -->
+    <div class="mb-16">
+      <div class="border-b border-wine-800/60 pb-3 mb-8 flex items-center justify-between">
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">Campus Ambassadors &amp; Event Leads</h2>
+          <p class="text-xs text-wine-400">University Partnerships &middot; On-Ground Activation</p>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-medium">Tier 4</span>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="card-3d p-5 flex items-center gap-4">
+          <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&auto=format&fit=crop&q=80" alt="Saad Malik" class="w-16 h-16 rounded-xl object-cover border border-emerald-400/30 shrink-0" />
+          <div>
+            <h3 class="font-display text-base font-bold text-white">Saad Malik</h3>
+            <p class="text-xs text-gold-400 font-medium">Lead Campus Ambassador</p>
+            <p class="text-[11px] text-wine-300/80">NUST Islamabad Chapter</p>
+          </div>
+        </div>
+
+        <div class="card-3d p-5 flex items-center gap-4">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=80" alt="Alizeh Shah" class="w-16 h-16 rounded-xl object-cover border border-emerald-400/30 shrink-0" />
+          <div>
+            <h3 class="font-display text-base font-bold text-white">Alizeh Shah</h3>
+            <p class="text-xs text-gold-400 font-medium">Event Hosting Lead</p>
+            <p class="text-[11px] text-wine-300/80">LUMS Lahore Chapter</p>
+          </div>
+        </div>
+
+        <div class="card-3d p-5 flex items-center gap-4">
+          <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=200&auto=format&fit=crop&q=80" alt="Usman Ghani" class="w-16 h-16 rounded-xl object-cover border border-emerald-400/30 shrink-0" />
+          <div>
+            <h3 class="font-display text-base font-bold text-white">Usman Ghani</h3>
+            <p class="text-xs text-gold-400 font-medium">Campus Coordinator</p>
+            <p class="text-[11px] text-wine-300/80">FAST-NUCES Chapter</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. FELLOWS, RESEARCH ASSOCIATES & INTERNS -->
+    <div class="mb-16">
+      <div class="border-b border-wine-800/60 pb-3 mb-8 flex items-center justify-between">
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">Fellows, Associates &amp; Interns</h2>
+          <p class="text-xs text-wine-400">Research &middot; Assessment Operations &middot; Community Support</p>
+        </div>
+        <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-medium">Tier 5</span>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="card-3d p-4 flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" alt="Areeba Noor" class="w-12 h-12 rounded-lg object-cover border border-wine-700 shrink-0" />
+          <div>
+            <div class="font-bold text-sm text-white">Areeba Noor</div>
+            <div class="text-[11px] text-gold-400">Research Intern</div>
+            <div class="text-[10px] text-wine-400">Policy &amp; Content</div>
+          </div>
+        </div>
+
+        <div class="card-3d p-4 flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=150&auto=format&fit=crop&q=80" alt="Daniyal Raza" class="w-12 h-12 rounded-lg object-cover border border-wine-700 shrink-0" />
+          <div>
+            <div class="font-bold text-sm text-white">Daniyal Raza</div>
+            <div class="text-[11px] text-gold-400">Operations Intern</div>
+            <div class="text-[10px] text-wine-400">Quiz Desk Lead</div>
+          </div>
+        </div>
+
+        <div class="card-3d p-4 flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Mahnoor Tariq" class="w-12 h-12 rounded-lg object-cover border border-wine-700 shrink-0" />
+          <div>
+            <div class="font-bold text-sm text-white">Mahnoor Tariq</div>
+            <div class="text-[11px] text-gold-400">Digital Media Intern</div>
+            <div class="text-[10px] text-wine-400">Outreach &amp; Design</div>
+          </div>
+        </div>
+
+        <div class="card-3d p-4 flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1480429370139-e0132c086e2a?w=150&auto=format&fit=crop&q=80" alt="Haris Ali" class="w-12 h-12 rounded-lg object-cover border border-wine-700 shrink-0" />
+          <div>
+            <div class="font-bold text-sm text-white">Haris Ali</div>
+            <div class="text-[11px] text-gold-400">Assessment Associate</div>
+            <div class="text-[10px] text-wine-400">Verification Desk</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Join Team CTA -->
+    <div class="card-3d p-8 sm:p-12 text-center bg-gradient-to-br from-wine-950 via-wine-900/60 to-wine-950">
+      <h3 class="font-display text-3xl font-bold text-white mb-3">Want to Join the NYLP Team?</h3>
+      <p class="text-wine-200/80 max-w-xl mx-auto mb-6 text-sm">
+        We are constantly welcoming passionate youth leaders, campus ambassadors, research associates, and volunteer organizers across all universities in Pakistan.
+      </p>
+      <div class="flex items-center justify-center gap-4">
+        <a href="contact.html" class="px-7 py-3.5 rounded-full bg-gradient-to-r from-wine-600 to-wine-700 hover:from-wine-500 text-white font-semibold text-sm shadow-lg shadow-wine-900/50 transition">
+          Apply as Campus Ambassador / Intern &rarr;
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-wine-900/60 py-8 text-center text-xs text-wine-400/70">
+    <div class="max-w-6xl mx-auto px-5">
+      &copy; 2026 National Youth Leadership Programme (NYLP). All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  </script>
+</body>
+</html>

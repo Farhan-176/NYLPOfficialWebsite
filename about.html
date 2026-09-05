@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About NYLP | National Youth Leadership Program (NYLP)</title>
+  <meta name="description" content="Discover the mission, history, founding vision, and institutional partnerships of the National Youth Leadership Programme (NYLP)." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            wine: { 50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d',950:'#052e16' },
+            gold: { 300:'#a7f3d0',400:'#6ee7b7',500:'#34d399',600:'#059669' }
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond','Georgia','serif'],
+            sans: ['Inter','system-ui','sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #04120a;
+      --card: #0a1f12;
+      --border: rgba(52,211,153,0.18);
+      --text: #ecfdf5;
+      --nav-bg: rgba(4,18,10,0.92);
+      --input-bg: #071a0e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+    }
+    .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .card-3d {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      transition: all 0.3s ease;
+    }
+    .card-3d:hover {
+      border-color: rgba(52,211,153,0.45);
+      box-shadow: 0 20px 40px -10px rgba(52,211,153,0.15);
+      transform: translateY(-4px);
+    }
+    .glass {
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body class="selection:bg-emerald-500 selection:text-white">
+
+  <!-- NAVIGATION -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="logo.png" alt="NYLP Logo" class="w-11 h-11 object-contain drop-shadow" />
+        <div>
+          <span class="font-display text-xl font-bold tracking-tight text-white block">NYLP</span>
+          <span class="text-[10px] text-wine-400 uppercase tracking-widest block -mt-1">National Youth Leadership</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
+        <a href="index.html" class="text-wine-200/80 hover:text-white transition">Home</a>
+        <a href="about.html" class="text-white font-semibold border-b-2 border-emerald-400 pb-1">About NYLP</a>
+        <a href="quiz.html" class="text-wine-200/80 hover:text-white transition"><i class="fa-solid fa-trophy mr-1 text-gold-400"></i> Take Quiz</a>
+        <a href="people.html" class="text-wine-200/80 hover:text-white transition">Our Team</a>
+        <a href="verify.html" class="text-wine-200/80 hover:text-white transition">Verify Certificate</a>
+        <a href="contact.html" class="text-wine-200/80 hover:text-white transition">Contact</a>
+      </nav>
+
+      <!-- Auth Action -->
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="px-4 py-2 rounded-full border border-wine-700/60 hover:border-emerald-400 text-wine-200 hover:text-white text-xs font-semibold transition">
+          Log In
+        </a>
+        <a href="index.html" class="px-4 py-2 rounded-full bg-gradient-to-r from-wine-600 to-wine-700 hover:from-wine-500 text-white text-xs font-semibold shadow-md shadow-wine-900/40 transition">
+          Sign Up
+        </a>
+        <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-xl bg-wine-900/40 border border-wine-800/50 text-white flex items-center justify-center">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-wine-900/60 bg-[var(--nav-bg)] px-5 py-4 space-y-3 text-sm">
+      <a href="index.html" class="block py-1.5 text-wine-200 hover:text-white">Home</a>
+      <a href="about.html" class="block py-1.5 text-white font-medium">About NYLP</a>
+      <a href="quiz.html" class="block py-1.5 text-gold-400 font-semibold"><i class="fa-solid fa-trophy mr-1.5"></i> Take Quiz</a>
+      <a href="people.html" class="block py-1.5 text-wine-200 hover:text-white">Our Team</a>
+      <a href="verify.html" class="block py-1.5 text-wine-200 hover:text-white">Verify Certificate</a>
+      <a href="contact.html" class="block py-1.5 text-wine-200 hover:text-white">Contact</a>
+    </div>
+  </header>
+
+  <main class="pt-32 pb-24 max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-wine-900/50 border border-wine-700/60 text-gold-400 text-xs font-semibold uppercase tracking-widest mb-4 shadow-sm">
+        <i class="fa-solid fa-shield-halved text-emerald-400"></i> Institutional Overview
+      </div>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
+        Building Pakistan’s Future Leaders
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-wine-200/80 leading-relaxed">
+        The National Youth Leadership Programme (NYLP) is dedicated to empowering Pakistan's young generation through structured leadership tracks, civic governance training, AI skills, and international diplomacy forums.
+      </p>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+      <div class="card-3d p-5 text-center">
+        <div class="font-display text-3xl sm:text-4xl font-bold text-gold-400">95K+</div>
+        <div class="text-xs text-wine-300/80 mt-1">LinkedIn Network</div>
+      </div>
+      <div class="card-3d p-5 text-center">
+        <div class="font-display text-3xl sm:text-4xl font-bold text-gold-400">400+</div>
+        <div class="text-xs text-wine-300/80 mt-1">Sessions Delivered</div>
+      </div>
+      <div class="card-3d p-5 text-center">
+        <div class="font-display text-3xl sm:text-4xl font-bold text-gold-400">60+</div>
+        <div class="text-xs text-wine-300/80 mt-1">Partner Institutes</div>
+      </div>
+      <div class="card-3d p-5 text-center">
+        <div class="font-display text-3xl sm:text-4xl font-bold text-gold-400">20+</div>
+        <div class="text-xs text-wine-300/80 mt-1">Conferences</div>
+      </div>
+      <div class="card-3d p-5 text-center">
+        <div class="font-display text-3xl sm:text-4xl font-bold text-gold-400">40K+</div>
+        <div class="text-xs text-wine-300/80 mt-1">Certifications</div>
+      </div>
+      <div class="card-3d p-5 text-center">
+        <div class="font-display text-3xl sm:text-4xl font-bold text-gold-400">8</div>
+        <div class="text-xs text-wine-300/80 mt-1">Fellowships</div>
+      </div>
+    </div>
+
+    <!-- Vision & Pillars -->
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="card-3d p-8 space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-wine-800/60 border border-wine-700/60 flex items-center justify-center text-gold-400 text-xl">
+          <i class="fa-solid fa-bullseye"></i>
+        </div>
+        <h2 class="font-display text-2xl font-bold text-white">Our Founding Mission</h2>
+        <p class="text-sm text-wine-200/80 leading-relaxed">
+          Founded by <strong>Khoja Sheraaz Ali</strong>, NYLP was built on the core belief that Pakistan's youth possesses unprecedented talent and ambition. Our mission is to transform that potential into measurable leadership impact.
+        </p>
+        <p class="text-sm text-wine-200/80 leading-relaxed">
+          Through nationwide fellowship cohorts, competitive assessments, public debate championships, and diplomatic simulations, NYLP establishes an ethical and rigorous standard for leadership development.
+        </p>
+      </div>
+
+      <div class="card-3d p-8 space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-wine-800/60 border border-wine-700/60 flex items-center justify-center text-gold-400 text-xl">
+          <i class="fa-solid fa-handshake"></i>
+        </div>
+        <h2 class="font-display text-2xl font-bold text-white">Strategic Collaborations</h2>
+        <p class="text-sm text-wine-200/80 leading-relaxed">
+          NYLP partners with premier international and national institutions to deliver high-calibre training. Our network includes initiatives alongside the Aspire Institute, Harvard University alumni groups, the SDGs Academy, and over 50 leading universities across Pakistan.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2">
+          <span class="px-3 py-1 rounded-lg bg-wine-900/60 border border-wine-800 text-xs text-gold-400 font-medium">Aspire Institute</span>
+          <span class="px-3 py-1 rounded-lg bg-wine-900/60 border border-wine-800 text-xs text-gold-400 font-medium">SDGs Academy</span>
+          <span class="px-3 py-1 rounded-lg bg-wine-900/60 border border-wine-800 text-xs text-gold-400 font-medium">IHRC-RFT</span>
+          <span class="px-3 py-1 rounded-lg bg-wine-900/60 border border-wine-800 text-xs text-gold-400 font-medium">60+ Universities</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Section -->
+    <div class="card-3d p-8 sm:p-12 text-center bg-gradient-to-br from-wine-950 via-wine-900/50 to-wine-950">
+      <h3 class="font-display text-3xl font-bold text-white mb-3">Ready to Join Pakistan's Leadership Movement?</h3>
+      <p class="text-sm text-wine-200/80 max-w-xl mx-auto mb-8">
+        Take our online National Quiz Competition, join our nationwide cohorts, or connect with our campus ambassadors across all major universities.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="quiz.html" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-wine-600 to-wine-700 hover:from-wine-500 text-white font-semibold text-sm shadow-lg shadow-wine-900/50 transition flex items-center gap-2">
+          <i class="fa-solid fa-trophy text-gold-400"></i> Take National Quiz
+        </a>
+        <a href="people.html" class="px-7 py-3.5 rounded-full bg-wine-900/60 hover:bg-wine-800/80 border border-wine-700 text-wine-200 text-sm font-semibold transition">
+          View Leadership &amp; Team
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-wine-900/60 py-8 text-center text-xs text-wine-400/70">
+    <div class="max-w-6xl mx-auto px-5">
+      &copy; 2026 National Youth Leadership Programme (NYLP). All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  </script>
+</body>
+</html>

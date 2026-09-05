@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>National Youth Leadership Program (NYLP) | Leaders of the Nation</title>
+  <meta name="description" content="National Youth Leadership Program (NYLP-2025) — a transformative nationwide initiative equipping Pakistan’s youth with skills, mindset and tools to thrive as future leaders. Self-Sustainability · Global Influence · Sustainable Future." />
+  <meta name="author" content="National Youth Leadership Programme (NYLP)" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <meta name="theme-color" content="#04120a" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="National Youth Leadership Program (NYLP) | Leaders of the Nation" />
+  <meta property="og:description" content="A transformative virtual initiative designed to equip Pakistan's youth with the skills, mindset and tools to thrive as future leaders." />
+  <meta property="og:image" content="cover.jpg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            wine: { 50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d',950:'#052e16' },
+            gold: { 300:'#a7f3d0',400:'#6ee7b7',500:'#34d399',600:'#059669' }
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond','Georgia','serif'],
+            sans: ['Inter','system-ui','sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome & Three.js Background -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #04120a;
+      --card: #0a1f12;
+      --border: rgba(52,211,153,0.18);
+      --text: #ecfdf5;
+      --nav-bg: rgba(4,18,10,0.92);
+      --input-bg: #071a0e;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      overflow: hidden; /* Perfect fixed on screen */
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+    .card-3d {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.3s;
+    }
+    .card-3d:hover {
+      border-color: rgba(52,211,153,0.45);
+      box-shadow: 0 20px 45px -10px rgba(52,211,153,0.18);
+    }
+
+    .glass {
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+      background: linear-gradient(90deg, #34d399, #15803d);
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(60px);
+      pointer-events: none; opacity: 0.35;
+    }
+  </style>
+</head>
+<body class="selection:bg-emerald-500 selection:text-white flex flex-col h-screen overflow-hidden">
+
+  <!-- Ambient 3D Constellation Canvas -->
+  <div id="bg3d-wrap" class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+    <canvas id="bg3d" class="w-full h-full block"></canvas>
+  </div>
+
+  <div class="orb w-96 h-96 bg-emerald-600/20 top-10 left-10" aria-hidden="true"></div>
+  <div class="orb w-96 h-96 bg-emerald-800/25 top-1/2 right-10" aria-hidden="true"></div>
+
+  <!-- ================================================================
+       CLEAN NAVIGATION BAR (PROPER, NO 3 BUTTONS, PERFECT HEIGHT)
+  ==================================================================== -->
+  <header class="h-16 shrink-0 z-50 glass relative">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 h-full flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="logo.png" alt="NYLP Logo" class="w-9 h-9 object-contain drop-shadow" />
+        <div>
+          <span class="font-display text-xl font-bold tracking-tight text-white block">NYLP</span>
+          <span class="text-[9px] text-wine-400 uppercase tracking-widest block -mt-1">National Youth Leadership</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links (Opening Separate Pages) -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-medium">
+        <a href="index.html" class="nav-link text-white font-semibold">Home</a>
+        <a href="about.html" class="nav-link text-wine-200/80 hover:text-white transition">About NYLP</a>
+        <a href="quiz.html" class="nav-link text-wine-200/80 hover:text-white transition"><i class="fa-solid fa-trophy mr-1 text-gold-400"></i> Take Quiz</a>
+        <a href="people.html" class="nav-link text-wine-200/80 hover:text-white transition">Our Team</a>
+        <a href="verify.html" class="nav-link text-wine-200/80 hover:text-white transition">Verify Certificate</a>
+        <a href="contact.html" class="nav-link text-wine-200/80 hover:text-white transition">Contact</a>
+      </nav>
+
+      <!-- Auth Controls & State -->
+      <div class="flex items-center gap-2.5">
+        <!-- Logged-in Candidate Badge -->
+        <div id="nav-user-badge" class="hidden items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-xs text-white">
+          <i class="fa-solid fa-user-check text-emerald-400 text-xs"></i>
+          <span id="nav-user-name" class="font-medium truncate max-w-[7rem]">Candidate</span>
+          <button id="btn-logout" title="Log out" class="text-wine-400 hover:text-rose-400 ml-1 transition">
+            <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
+          </button>
+        </div>
+
+        <!-- Log In and Sign Up Buttons -->
+        <div id="nav-auth-buttons" class="flex items-center gap-2">
+          <button id="btn-open-login" class="px-3.5 py-1.5 rounded-full border border-wine-700/60 hover:border-emerald-400 text-wine-200 hover:text-white text-xs font-semibold transition">
+            Log In
+          </button>
+          <button id="btn-open-signup" class="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-wine-600 to-wine-700 hover:from-wine-500 text-white text-xs font-semibold shadow-md shadow-wine-900/40 transition">
+            Sign Up
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" class="lg:hidden w-8 h-8 rounded-lg bg-wine-900/40 border border-wine-800/50 text-white flex items-center justify-center">
+          <i class="fa-solid fa-bars text-xs"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden absolute top-16 left-0 right-0 border-t border-wine-900/60 bg-[var(--nav-bg)] px-5 py-4 space-y-2.5 text-sm z-50">
+      <a href="index.html" class="block py-1 text-white font-medium mobile-link">Home</a>
+      <a href="about.html" class="block py-1 text-wine-200 hover:text-white mobile-link">About NYLP</a>
+      <a href="quiz.html" class="block py-1 text-gold-400 font-semibold mobile-link"><i class="fa-solid fa-trophy mr-1.5"></i> Take Quiz</a>
+      <a href="people.html" class="block py-1 text-wine-200 hover:text-white mobile-link">Our Team</a>
+      <a href="verify.html" class="block py-1 text-wine-200 hover:text-white mobile-link">Verify Certificate</a>
+      <a href="contact.html" class="block py-1 text-wine-200 hover:text-white mobile-link">Contact</a>
+      <div id="mobile-auth-row" class="pt-2 flex items-center gap-2 border-t border-wine-800/50">
+        <button id="btn-open-login-mobile" class="w-1/2 py-1.5 rounded-lg border border-wine-700 text-xs text-white font-medium">Log In</button>
+        <button id="btn-open-signup-mobile" class="w-1/2 py-1.5 rounded-lg bg-emerald-600 text-xs text-white font-medium">Sign Up</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================================================================
+       MAIN BODY (PERFECT FIX ON SCREEN - 100% VIEWPORT HEIGHT, NO SCROLL)
+  ==================================================================== -->
+  <main class="flex-1 relative z-10 flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-2 overflow-hidden">
+
+    <!-- ================================================================
+         HERO SECTION: DYNAMIC STATE 1 (GUEST - EXACT MATCH SCREENSHOT 1)
+         Replaced 'Explore Programmes' with 'Take Quiz' button
+         Sized proportionally to fit 100vh on all laptop viewports
+    ==================================================================== -->
+    <section id="hero-guest" class="w-full flex flex-col justify-center my-auto">
+      <div class="max-w-6xl mx-auto w-full">
+        <div class="grid lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+          
+          <!-- Left Column (Screenshot 1) -->
+          <div class="lg:col-span-7 space-y-3 sm:space-y-4 text-left">
+            
+            <!-- Badges -->
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-wine-950/80 border border-wine-800/70 text-[10px] sm:text-[11px] font-semibold text-white uppercase tracking-wider">
+                <i class="fa-solid fa-flag text-emerald-400 text-[9px]"></i> NYLP 2025 &middot; LEADERS OF THE NATION
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-wine-950/80 border border-wine-800/70 text-[10px] sm:text-[11px] font-semibold text-emerald-400 uppercase tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> MEMBERSHIP OPEN
+              </span>
+            </div>
+
+            <!-- Title & Subtitle -->
+            <div class="space-y-0.5">
+              <h1 class="font-display text-3xl sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold text-white tracking-tight leading-[1.08]">
+                National Youth<br />Leadership Program
+              </h1>
+              <p class="font-display text-xl sm:text-2xl lg:text-[1.65rem] text-emerald-400 font-semibold tracking-wide pt-0.5">
+                NYLP 2025 &middot; Leaders of the Nation
+              </p>
+            </div>
+
+            <!-- Paragraph -->
+            <p class="text-xs sm:text-[13px] text-wine-200/85 max-w-xl leading-relaxed">
+              A transformative virtual initiative designed to equip Pakistan's youth with the skills, mindset and tools to thrive as future leaders through immersive training and mentorship.
+            </p>
+
+            <!-- CTA Buttons: Join NYLP | Take Quiz (Replaced Explore Programmes) | Certificates -->
+            <div class="flex flex-wrap items-center gap-2.5 pt-0.5">
+              <button id="btn-hero-join" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-[#04120a] font-bold text-xs sm:text-sm shadow-lg shadow-emerald-950/50 transition flex items-center gap-2">
+                <span>Join NYLP</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+              </button>
+              
+              <!-- Take Quiz Button (Replaced Explore Programmes & Moves toward Login/Signup) -->
+              <button id="btn-hero-take-quiz" class="px-5 py-2.5 rounded-full bg-wine-950/70 hover:bg-wine-900 border border-wine-800 text-xs sm:text-sm text-wine-200 hover:text-white font-medium transition flex items-center gap-2 group">
+                <i class="fa-solid fa-trophy text-xs text-gold-400 group-hover:scale-110 transition-transform"></i>
+                <span>Take Quiz</span>
+              </button>
+
+              <a href="verify.html" class="px-4 py-2.5 rounded-full bg-wine-950/70 hover:bg-wine-900 border border-wine-800 text-xs sm:text-sm text-wine-200 hover:text-white font-medium transition flex items-center gap-2">
+                <i class="fa-solid fa-certificate text-xs text-gold-400"></i>
+                <span>Certificates</span>
+              </a>
+            </div>
+
+            <!-- Bottom Stats (Perfect fit, never cut off) -->
+            <div class="flex items-center gap-6 sm:gap-8 pt-3 sm:pt-4 border-t border-wine-900/60 text-xs">
+              <div>
+                <div class="font-display text-base sm:text-xl font-bold text-white">2025</div>
+                <div class="text-[8px] sm:text-[9px] text-wine-400 uppercase tracking-widest mt-0.5">FOUNDED</div>
+              </div>
+              <div class="h-6 w-px bg-wine-900/80"></div>
+              <div>
+                <div class="font-display text-base sm:text-xl font-bold text-emerald-400">Virtual</div>
+                <div class="text-[8px] sm:text-[9px] text-wine-400 uppercase tracking-widest mt-0.5">IMMERSIVE TRAINING</div>
+              </div>
+              <div class="h-6 w-px bg-wine-900/80"></div>
+              <div>
+                <div class="font-display text-base sm:text-xl font-bold text-white">Islamabad</div>
+                <div class="text-[8px] sm:text-[9px] text-wine-400 uppercase tracking-widest mt-0.5">HEADQUARTERS &middot; PK</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Card (Screenshot 1) -->
+          <div class="lg:col-span-5">
+            <div class="card-3d p-5 sm:p-6 bg-gradient-to-br from-wine-950/90 via-wine-900/50 to-wine-950/90 border border-wine-700/60 shadow-2xl space-y-3 sm:space-y-4">
+              <div class="text-center space-y-1.5 pb-2.5 border-b border-wine-800/60">
+                <img src="logo.png" alt="NYLP Logo" class="w-12 h-12 sm:w-14 sm:h-14 object-contain mx-auto drop-shadow-md" />
+                <h3 class="font-display text-lg sm:text-xl font-bold text-white tracking-wide">NYLP</h3>
+                <p class="text-[9px] text-gold-400 font-semibold tracking-widest uppercase">
+                  National Youth Leadership Programme
+                </p>
+              </div>
+
+              <!-- Checklist Items -->
+              <ul class="space-y-2 text-xs text-wine-200/90">
+                <li class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
+                  <span>Self-Sustainability</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
+                  <span>Global Influence</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
+                  <span>Sustainable Future</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
+                  <span>Immersive Training &amp; Mentorship</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
+                  <span>Verified Certificates &amp; Recognition</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         HERO SECTION: DYNAMIC STATE 2 (LOGGED IN - EXACT MATCH SCREENSHOT 2)
+    ==================================================================== -->
+    <section id="hero-logged-in" class="w-full flex flex-col justify-center my-auto hidden">
+      <div class="max-w-6xl mx-auto w-full">
+        <div class="grid lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+          
+          <!-- Left Column (Screenshot 2) -->
+          <div class="lg:col-span-7 space-y-3 sm:space-y-4 text-left">
+            
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-wine-900/50 border border-wine-700/60 text-gold-400 text-[11px] font-semibold uppercase tracking-widest shadow-sm">
+              <i class="fa-solid fa-shield-halved text-emerald-400"></i> Pakistan’s Premier Youth Movement
+            </div>
+
+            <!-- Heading -->
+            <h1 class="font-display text-3xl sm:text-4xl lg:text-[2.6rem] xl:text-[3rem] font-bold text-white tracking-tight leading-[1.1]">
+              Empowering Pakistan’s Next Generation of <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-300">Visionary Leaders</span>
+            </h1>
+
+            <!-- Paragraph -->
+            <p class="text-xs sm:text-[13px] text-wine-200/85 max-w-xl leading-relaxed">
+              The <strong>National Youth Leadership Program (NYLP-2025)</strong> is a transformative nationwide movement dedicated to equipping youth with strategic leadership, civic advocacy, artificial intelligence, and diplomacy skills. Founded by <strong>Khoja Sheraaz Ali</strong>, NYLP connects over 95,000+ ambitious youth across all provinces with global mentorship and institutional excellence.
+            </p>
+
+            <!-- Metrics -->
+            <div class="flex flex-wrap gap-2 pt-0.5">
+              <span class="px-2.5 py-0.5 rounded-full bg-wine-950/70 border border-wine-800 text-[10px] sm:text-[11px] text-wine-200 flex items-center gap-1.5">
+                <i class="fa-solid fa-users text-emerald-400"></i> 95K+ Community
+              </span>
+              <span class="px-2.5 py-0.5 rounded-full bg-wine-950/70 border border-wine-800 text-[10px] sm:text-[11px] text-wine-200 flex items-center gap-1.5">
+                <i class="fa-solid fa-building-columns text-emerald-400"></i> 60+ Partner Institutes
+              </span>
+              <span class="px-2.5 py-0.5 rounded-full bg-wine-950/70 border border-wine-800 text-[10px] sm:text-[11px] text-wine-200 flex items-center gap-1.5">
+                <i class="fa-solid fa-certificate text-gold-400"></i> 40K+ Certifications
+              </span>
+            </div>
+
+            <!-- CTA Buttons (Screenshot 2) -->
+            <div class="flex flex-wrap items-center gap-2.5 pt-1">
+              <a href="quiz.html" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-wine-600 via-emerald-600 to-wine-700 hover:from-wine-500 hover:to-emerald-500 text-white font-bold text-xs sm:text-sm shadow-xl shadow-wine-950/60 transition flex items-center justify-center gap-2 group">
+                <i class="fa-solid fa-trophy text-gold-400 group-hover:scale-110 transition-transform"></i>
+                <span>Take National Quiz</span>
+                <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+              </a>
+
+              <a href="about.html" class="px-5 py-2.5 rounded-full bg-wine-900/50 hover:bg-wine-800/80 border border-wine-700/80 text-wine-200 hover:text-white font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-circle-info text-xs"></i>
+                <span>About NYLP Mission</span>
+              </a>
+
+              <a href="verify.html" class="px-3.5 py-2.5 rounded-full border border-wine-800/70 text-wine-300 hover:text-gold-400 text-xs font-medium text-center transition">
+                Verify Certificate ID &rarr;
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Right Card (Screenshot 2) -->
+          <div class="lg:col-span-5">
+            <div class="card-3d p-5 sm:p-6 bg-gradient-to-br from-wine-950/90 via-wine-900/60 to-wine-950/90 border border-wine-700/60 shadow-2xl relative space-y-3">
+              <div class="flex items-center justify-between border-b border-wine-800/60 pb-2.5">
+                <div class="flex items-center gap-2">
+                  <img src="logo.png" alt="NYLP Logo" class="w-8 h-8 object-contain" />
+                  <div>
+                    <h3 class="font-display text-sm sm:text-base font-bold text-white">Annual Assessment Hub</h3>
+                    <p class="text-[9px] text-wine-400">National Youth Leadership Programme</p>
+                  </div>
+                </div>
+                <span class="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 text-[9px] font-semibold uppercase tracking-wider">ACTIVE</span>
+              </div>
+
+              <div class="space-y-2 text-xs text-wine-200/85">
+                <div class="flex items-start gap-2 p-2 rounded-xl bg-wine-900/40 border border-wine-800/50">
+                  <div class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                    <i class="fa-solid fa-graduation-cap text-[10px]"></i>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-white text-xs">10 Comprehensive Questions</div>
+                    <div class="text-[9px] text-wine-300/80">Covering national history, leadership diplomacy &amp; civic knowledge.</div>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-2 p-2 rounded-xl bg-wine-900/40 border border-wine-800/50">
+                  <div class="w-6 h-6 rounded-lg bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5">
+                    <i class="fa-solid fa-award text-[10px]"></i>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-white text-xs">High-Res Official Certification</div>
+                    <div class="text-[9px] text-wine-300/80">Instant 2000&times;1414 PNG &amp; PDF download with unique verifiable ID.</div>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-2 p-2 rounded-xl bg-wine-900/40 border border-wine-800/50">
+                  <div class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                    <i class="fa-solid fa-shield-halved text-[10px]"></i>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-white text-xs">Live Institutional Record</div>
+                    <div class="text-[9px] text-wine-300/80">Submissions verified and authenticated across the public registry.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-2 border-t border-wine-800/60 flex items-center justify-between">
+                <span class="text-[10px] text-wine-400">Ready to test your knowledge?</span>
+                <a href="quiz.html" class="text-xs font-bold text-gold-400 hover:text-emerald-300 flex items-center gap-1 transition">
+                  <span>Start Assessment</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================================
+       AUTHENTICATION MODAL (LOGIN & SIGN UP)
+  ==================================================================== -->
+  <div id="auth-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="relative w-full max-w-md card-3d p-6 sm:p-8 bg-[#0a1f12] border border-emerald-500/30 shadow-2xl shadow-black/80">
+      
+      <button id="btn-close-auth-modal" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-wine-900/60 text-wine-300 hover:text-white flex items-center justify-center text-sm transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-center mb-5">
+        <img src="logo.png" alt="NYLP Logo" class="w-12 h-12 object-contain mx-auto mb-2 drop-shadow" />
+        <h3 id="auth-modal-title" class="font-display text-2xl font-bold text-white">Candidate Portal</h3>
+        <p class="text-xs text-wine-300/80 mt-0.5">Sign in to take the National Quiz and generate your verified certificate.</p>
+
+        <!-- Tab Controls -->
+        <div class="grid grid-cols-2 gap-2 mt-4 p-1 rounded-xl bg-wine-950/70 border border-wine-800">
+          <button id="tab-btn-login" class="py-2 rounded-lg text-xs font-semibold bg-emerald-600 text-white shadow transition">
+            Log In
+          </button>
+          <button id="tab-btn-signup" class="py-2 rounded-lg text-xs font-semibold text-wine-300 hover:text-white transition">
+            Create Account
+          </button>
+        </div>
+      </div>
+
+      <!-- Form 1: Log In -->
+      <form id="form-login" class="space-y-3.5">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-wine-400 mb-1">Email / Candidate Name</label>
+          <input type="text" id="login-email" required placeholder="name@example.com or official full name" class="w-full px-4 py-2.5 rounded-xl border border-wine-800 bg-[var(--input-bg)] text-white text-sm placeholder-wine-500/50 focus:outline-none focus:border-emerald-400 transition" />
+        </div>
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-wine-400">Password</label>
+            <a href="#" onclick="alert('Password reset instructions sent to your email.'); return false;" class="text-[11px] text-gold-400 hover:underline">Forgot?</a>
+          </div>
+          <input type="password" id="login-password" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-wine-800 bg-[var(--input-bg)] text-white text-sm placeholder-wine-500/50 focus:outline-none focus:border-emerald-400 transition" />
+        </div>
+        <button type="submit" class="w-full py-3 rounded-full bg-gradient-to-r from-wine-600 to-wine-700 hover:from-wine-500 text-white font-semibold text-sm shadow-lg shadow-wine-950/50 transition mt-1">
+          Log In &amp; Proceed to Assessment
+        </button>
+      </form>
+
+      <!-- Form 2: Sign Up (Carries Official Name through) -->
+      <form id="form-signup" class="space-y-3.5 hidden">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-wine-400 mb-1">
+            Full Official Name <span class="text-emerald-400 font-normal">(as on certificate) *</span>
+          </label>
+          <input type="text" id="signup-name" required placeholder="e.g. Fatima Khan" class="w-full px-4 py-2.5 rounded-xl border border-wine-800 bg-[var(--input-bg)] text-white text-sm placeholder-wine-500/50 focus:outline-none focus:border-emerald-400 transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-wine-400 mb-1">Email Address *</label>
+          <input type="email" id="signup-email" required placeholder="name@example.com" class="w-full px-4 py-2.5 rounded-xl border border-wine-800 bg-[var(--input-bg)] text-white text-sm placeholder-wine-500/50 focus:outline-none focus:border-emerald-400 transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-wine-400 mb-1">University / College / City</label>
+          <input type="text" id="signup-institution" placeholder="e.g. NUST / Islamabad" class="w-full px-4 py-2.5 rounded-xl border border-wine-800 bg-[var(--input-bg)] text-white text-sm placeholder-wine-500/50 focus:outline-none focus:border-emerald-400 transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-wine-400 mb-1">Password</label>
+          <input type="password" id="signup-password" required minlength="6" placeholder="At least 6 characters" class="w-full px-4 py-2.5 rounded-xl border border-wine-800 bg-[var(--input-bg)] text-white text-sm placeholder-wine-500/50 focus:outline-none focus:border-emerald-400 transition" />
+        </div>
+        <button type="submit" class="w-full py-3 rounded-full bg-gradient-to-r from-emerald-600 to-wine-700 hover:from-emerald-500 text-white font-semibold text-sm shadow-lg shadow-wine-950/50 transition mt-1">
+          Create Account &amp; Save Official Name
+        </button>
+      </form>
+
+      <div class="mt-4 pt-3 border-t border-wine-800/60 text-center">
+        <p class="text-[11px] text-wine-400">Official name is authenticated for certificate generation.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================================
+       SCRIPTS: AUTHENTICATION, STATE SWITCHER, AND THREE.JS
+  ==================================================================== -->
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Auth Modal & State Switcher
+    const heroGuest = document.getElementById('hero-guest');
+    const heroLoggedIn = document.getElementById('hero-logged-in');
+    const authModal = document.getElementById('auth-modal');
+    const btnOpenLogin = document.getElementById('btn-open-login');
+    const btnOpenSignup = document.getElementById('btn-open-signup');
+    const btnHeroJoin = document.getElementById('btn-hero-join');
+    const btnHeroTakeQuiz = document.getElementById('btn-hero-take-quiz');
+    const btnOpenLoginMobile = document.getElementById('btn-open-login-mobile');
+    const btnOpenSignupMobile = document.getElementById('btn-open-signup-mobile');
+    const btnCloseAuth = document.getElementById('btn-close-auth-modal');
+    const tabBtnLogin = document.getElementById('tab-btn-login');
+    const tabBtnSignup = document.getElementById('tab-btn-signup');
+    const formLogin = document.getElementById('form-login');
+    const formSignup = document.getElementById('form-signup');
+    const navAuthButtons = document.getElementById('nav-auth-buttons');
+    const navUserBadge = document.getElementById('nav-user-badge');
+    const navUserName = document.getElementById('nav-user-name');
+    const btnLogout = document.getElementById('btn-logout');
+
+    function openAuth(mode = 'login') {
+      authModal.classList.remove('hidden');
+      authModal.classList.add('flex');
+      if (mode === 'login') {
+        tabBtnLogin.className = 'py-2 rounded-lg text-xs font-semibold bg-emerald-600 text-white shadow transition';
+        tabBtnSignup.className = 'py-2 rounded-lg text-xs font-semibold text-wine-300 hover:text-white transition';
+        formLogin.classList.remove('hidden');
+        formSignup.classList.add('hidden');
+        document.getElementById('login-email').focus();
+      } else {
+        tabBtnSignup.className = 'py-2 rounded-lg text-xs font-semibold bg-emerald-600 text-white shadow transition';
+        tabBtnLogin.className = 'py-2 rounded-lg text-xs font-semibold text-wine-300 hover:text-white transition';
+        formSignup.classList.remove('hidden');
+        formLogin.classList.add('hidden');
+        document.getElementById('signup-name').focus();
+      }
+    }
+
+    function closeAuth() {
+      authModal.classList.add('hidden');
+      authModal.classList.remove('flex');
+    }
+
+    btnOpenLogin?.addEventListener('click', () => openAuth('login'));
+    btnOpenSignup?.addEventListener('click', () => openAuth('signup'));
+    btnHeroJoin?.addEventListener('click', () => openAuth('signup'));
+    
+    // When guest clicks Take Quiz on hero, moves toward login/signup area:
+    btnHeroTakeQuiz?.addEventListener('click', () => {
+      const savedUser = JSON.parse(localStorage.getItem('nylp-user') || 'null');
+      if (savedUser && savedUser.name) {
+        window.location.href = 'quiz.html';
+      } else {
+        openAuth('signup');
+      }
+    });
+
+    btnOpenLoginMobile?.addEventListener('click', () => { mobileMenu.classList.add('hidden'); openAuth('login'); });
+    btnOpenSignupMobile?.addEventListener('click', () => { mobileMenu.classList.add('hidden'); openAuth('signup'); });
+    btnCloseAuth?.addEventListener('click', closeAuth);
+    authModal?.addEventListener('click', (e) => { if (e.target === authModal) closeAuth(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAuth(); });
+
+    tabBtnLogin?.addEventListener('click', () => openAuth('login'));
+    tabBtnSignup?.addEventListener('click', () => openAuth('signup'));
+
+    // Apply Logged-in state (Screenshot 2)
+    function applyLoggedInState(name, email) {
+      localStorage.setItem('nylp_official_name', name);
+      localStorage.setItem('nylp-user', JSON.stringify({ name, email }));
+      
+      // Update Navbar
+      navAuthButtons.classList.add('hidden');
+      navUserBadge.classList.remove('hidden');
+      navUserBadge.classList.add('flex');
+      navUserName.textContent = name.split(' ')[0] || name;
+
+      // Switch Hero to Logged-in state (Screenshot 2)
+      heroGuest.classList.add('hidden');
+      heroLoggedIn.classList.remove('hidden');
+    }
+
+    // Apply Guest state (Screenshot 1)
+    function applyGuestState() {
+      localStorage.removeItem('nylp-user');
+
+      // Update Navbar
+      navUserBadge.classList.add('hidden');
+      navUserBadge.classList.remove('flex');
+      navAuthButtons.classList.remove('hidden');
+
+      // Switch Hero to Guest state (Screenshot 1)
+      heroLoggedIn.classList.add('hidden');
+      heroGuest.classList.remove('hidden');
+    }
+
+    // Check saved state on load
+    function initAuthState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('nylp-user') || 'null');
+        if (saved && saved.name) {
+          applyLoggedInState(saved.name, saved.email);
+        } else {
+          applyGuestState();
+        }
+      } catch (e) {
+        applyGuestState();
+      }
+    }
+    initAuthState();
+
+    btnLogout?.addEventListener('click', () => {
+      applyGuestState();
+    });
+
+    formLogin?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const rawInput = document.getElementById('login-email').value.trim();
+      const existingOfficial = localStorage.getItem('nylp_official_name');
+      const name = existingOfficial || (rawInput.includes('@') ? rawInput.split('@')[0] : rawInput);
+      const email = rawInput.includes('@') ? rawInput : (name + '@nylp.candidate');
+      applyLoggedInState(name, email);
+      closeAuth();
+    });
+
+    formSignup?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('signup-name').value.trim();
+      const email = document.getElementById('signup-email').value.trim();
+      const inst = document.getElementById('signup-institution').value.trim();
+      localStorage.setItem('nylp_institution', inst);
+      applyLoggedInState(name, email);
+      closeAuth();
+    });
+  </script>
+
+  <!-- Three.js Constellation Background -->
+  <script>
+  (function () {
+    const canvas = document.getElementById('bg3d');
+    if (!canvas || typeof THREE === 'undefined') return;
+
+    let renderer, scene, camera, group, particles, links;
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    } catch (e) { return; }
+
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.set(0, 0, 14);
+
+    group = new THREE.Group();
+    scene.add(group);
+
+    const COUNT = window.innerWidth < 640 ? 45 : 90;
+    const positions = new Float32Array(COUNT * 3);
+    const nodePts = [];
+    for (let i = 0; i < COUNT; i++) {
+      const x = (Math.random() - 0.5) * 26;
+      const y = (Math.random() - 0.5) * 16;
+      const z = (Math.random() - 0.5) * 18 - 4;
+      positions[i * 3] = x; positions[i * 3 + 1] = y; positions[i * 3 + 2] = z;
+      nodePts.push(new THREE.Vector3(x, y, z));
+    }
+    const ptsGeo = new THREE.BufferGeometry();
+    ptsGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const ptsMat = new THREE.PointsMaterial({ color: 0x34d399, size: 0.09, transparent: true, opacity: 0.8 });
+    particles = new THREE.Points(ptsGeo, ptsMat);
+    group.add(particles);
+
+    const linkPositions = [];
+    const MAXD = 4.4;
+    for (let i = 0; i < nodePts.length; i++) {
+      let count = 0;
+      for (let j = i + 1; j < nodePts.length; j++) {
+        if (count >= 3) break;
+        if (nodePts[i].distanceTo(nodePts[j]) < MAXD) {
+          linkPositions.push(nodePts[i].x, nodePts[i].y, nodePts[i].z, nodePts[j].x, nodePts[j].y, nodePts[j].z);
+          count++;
+        }
+      }
+    }
+    const linkGeo = new THREE.BufferGeometry();
+    linkGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(linkPositions), 3));
+    const linkMat = new THREE.LineBasicMaterial({ color: 0x15803d, transparent: true, opacity: 0.18 });
+    links = new THREE.LineSegments(linkGeo, linkMat);
+    group.add(links);
+
+    let mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
+    window.addEventListener('mousemove', (e) => {
+      targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      mouseX += (targetMouseX - mouseX) * 0.04;
+      mouseY += (targetMouseY - mouseY) * 0.04;
+      camera.position.x = mouseX * 0.7;
+      camera.position.y = -mouseY * 0.4;
+      camera.lookAt(0, 0, camera.position.z - 8);
+      particles.rotation.y += 0.0006;
+      links.rotation.y += 0.0006;
+      renderer.render(scene, camera);
+    }
+    animate();
+  })();
+  </script>
+</body>
+</html>
