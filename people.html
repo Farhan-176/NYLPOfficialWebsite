@@ -86,14 +86,27 @@
         <a href="contact.html" class="text-wine-200/85 hover:text-white transition">Contact</a>
       </nav>
 
-      <!-- Auth Action -->
-      <div class="flex items-center gap-2 sm:gap-2.5 shrink-0 whitespace-nowrap">
-        <a href="index.html" class="px-4.5 py-1.5 sm:px-5 sm:py-2 rounded-full border border-wine-700/60 hover:border-emerald-400 text-wine-200 hover:text-white text-xs sm:text-[13px] font-semibold transition whitespace-nowrap shadow-sm">
-          Log In
-        </a>
-        <a href="index.html" class="px-4.5 py-1.5 sm:px-5 sm:py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-[13px] font-semibold shadow-sm transition whitespace-nowrap">
-          Sign Up
-        </a>
+      <!-- Auth Controls & State -->
+      <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+        <!-- Logged-in Candidate Badge -->
+        <div id="nav-user-badge" class="hidden items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-xs sm:text-sm text-white whitespace-nowrap">
+          <i class="fa-solid fa-user-check text-emerald-400 text-xs"></i>
+          <span id="nav-user-name" class="font-medium truncate max-w-[8rem]">Candidate</span>
+          <button id="btn-logout" title="Log out" class="text-wine-400 hover:text-rose-400 ml-1 transition">
+            <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
+          </button>
+        </div>
+
+        <!-- Log In and Sign Up Buttons (Guest state) -->
+        <div id="nav-auth-buttons" class="flex items-center gap-2 sm:gap-2.5 whitespace-nowrap">
+          <a href="index.html?auth=login" class="px-4.5 py-1.5 sm:px-5 sm:py-2 rounded-full border border-wine-700/60 hover:border-emerald-400 text-wine-200 hover:text-white text-xs sm:text-[13px] font-semibold transition whitespace-nowrap shadow-sm">
+            Log In
+          </a>
+          <a href="index.html?auth=signup" class="px-4.5 py-1.5 sm:px-5 sm:py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-[13px] font-semibold shadow-sm transition whitespace-nowrap">
+            Sign Up
+          </a>
+        </div>
+
         <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 rounded-xl bg-wine-900/40 border border-wine-800/50 text-white flex items-center justify-center">
           <i class="fa-solid fa-bars text-sm"></i>
         </button>
@@ -390,6 +403,42 @@
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     mobileBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    (function syncGlobalAuth() {
+      const userBadge = document.getElementById('nav-user-badge');
+      const authButtons = document.getElementById('nav-auth-buttons');
+      const userNameEl = document.getElementById('nav-user-name');
+      const btnLogout = document.getElementById('btn-logout');
+
+      let officialName = '';
+      try {
+        const savedOfficial = localStorage.getItem('nylp_official_name');
+        const savedUser = JSON.parse(localStorage.getItem('nylp-user') || 'null');
+        officialName = savedOfficial || (savedUser && savedUser.name ? savedUser.name : '');
+      } catch (e) {}
+
+      if (officialName) {
+        if (authButtons) authButtons.classList.add('hidden');
+        if (userBadge) {
+          userBadge.classList.remove('hidden');
+          userBadge.classList.add('flex');
+        }
+        if (userNameEl) userNameEl.textContent = officialName.split(' ')[0] || officialName;
+      } else {
+        if (userBadge) {
+          userBadge.classList.add('hidden');
+          userBadge.classList.remove('flex');
+        }
+        if (authButtons) authButtons.classList.remove('hidden');
+      }
+
+      btnLogout?.addEventListener('click', () => {
+        localStorage.removeItem('nylp-user');
+        localStorage.removeItem('nylp_official_name');
+        localStorage.removeItem('nylp_institution');
+        window.location.reload();
+      });
+    })();
   </script>
 </body>
 </html>

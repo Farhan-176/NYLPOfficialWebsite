@@ -583,6 +583,8 @@
     // Apply Guest state (Screenshot 1)
     function applyGuestState() {
       localStorage.removeItem('nylp-user');
+      localStorage.removeItem('nylp_official_name');
+      localStorage.removeItem('nylp_institution');
 
       // Update Navbar
       navUserBadge.classList.add('hidden');
@@ -598,14 +600,24 @@
     function initAuthState() {
       try {
         const saved = JSON.parse(localStorage.getItem('nylp-user') || 'null');
-        if (saved && saved.name) {
-          applyLoggedInState(saved.name, saved.email);
+        const official = localStorage.getItem('nylp_official_name');
+        const name = (saved && saved.name) || official;
+        const email = (saved && saved.email) || (name ? name + '@nylp.candidate' : '');
+        if (name) {
+          applyLoggedInState(name, email);
         } else {
           applyGuestState();
         }
       } catch (e) {
         applyGuestState();
       }
+
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const authAction = urlParams.get('auth');
+        if (authAction === 'login') openAuth('login');
+        else if (authAction === 'signup') openAuth('signup');
+      } catch (e) {}
     }
     initAuthState();
 
